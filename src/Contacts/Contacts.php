@@ -12,6 +12,7 @@ use Jetimob\ActiveCampaign\Resource;
 class Contacts extends Resource
 {
 
+    protected const BASE_URL = '/api/3/contacts';
     /**
      * Create a contact
      * @see https://developers.activecampaign.com/reference#create-contact
@@ -23,7 +24,7 @@ class Contacts extends Resource
     {
         $req = $this->client
             ->getClient()
-            ->post('/api/3/contacts', [
+            ->post(static::BASE_URL, [
                 'json' => [
                     'contact' => $contact
                 ]
@@ -63,7 +64,7 @@ class Contacts extends Resource
     {
         $req = $this->client
             ->getClient()
-            ->get('/api/3/contacts/' . $id);
+            ->get(static::BASE_URL . "/{$id}");
 
         return $req->getBody()->getContents();
     }
@@ -100,7 +101,7 @@ class Contacts extends Resource
     {
         $req = $this->client
             ->getClient()
-            ->put('/api/3/contacts/' . $id, [
+            ->put(static::BASE_URL . "/{$id}", [
                 'json' => [
                     'contact' => $contact
                 ]
@@ -120,7 +121,7 @@ class Contacts extends Resource
     {
         $req = $this->client
             ->getClient()
-            ->delete('/api/3/contacts/' . $id);
+            ->delete(static::BASE_URL . "/{$id}");
 
         return 200 === $req->getStatusCode();
     }
@@ -136,7 +137,7 @@ class Contacts extends Resource
     {
         $req = $this->client
             ->getClient()
-            ->get('/api/3/contacts/' . $id . '/contactAutomations');
+            ->get(static::BASE_URL . "{$id}/contactAutomations");
 
         return $req->getBody()->getContents();
     }
@@ -199,7 +200,7 @@ class Contacts extends Resource
 
         $req = $this->client
             ->getClient()
-            ->get('/api/3/contacts', [
+            ->get(static::BASE_URL, [
                 'query' => $query_params
             ]);
 

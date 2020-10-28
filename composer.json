@@ -2,7 +2,7 @@
   "name": "jetimob/activecampaign-v3-php",
   "description": "PHP Wrapper for ActiveCampaign",
   "require": {
-    "php": "^7.0",
+    "php": "^7.1",
     "guzzlehttp/guzzle": "~6.3"
   },
   "require-dev": {
