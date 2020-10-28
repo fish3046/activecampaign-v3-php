@@ -3,7 +3,7 @@
   "description": "PHP Wrapper for ActiveCampaign",
   "require": {
     "php": "^7.1",
-    "guzzlehttp/guzzle": "~6.3"
+    "guzzlehttp/guzzle": "^7.0"
   },
   "require-dev": {
     "phpunit/phpunit": "^7",
