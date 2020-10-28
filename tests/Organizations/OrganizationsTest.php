@@ -5,11 +5,11 @@
  * Time: 15:18
  */
 
-namespace Mediatoolkit\Tests\Organizations;
+namespace Jetimob\ActiveCampaign\Tests\Organizations;
 
 
-use Mediatoolkit\ActiveCampaign\Organizations\Organizations;
-use Mediatoolkit\Tests\ResourceTestCase;
+use Jetimob\ActiveCampaign\Organizations\Organizations;
+use Jetimob\ActiveCampaign\Tests\ResourceTestCase;
 
 class OrganizationsTest extends ResourceTestCase
 {

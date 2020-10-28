@@ -1,13 +1,12 @@
 <?php
 
-namespace Mediatoolkit\ActiveCampaign\Deals;
+namespace Jetimob\ActiveCampaign\Deals;
 
-
-use Mediatoolkit\ActiveCampaign\Resource;
+use Jetimob\ActiveCampaign\Resource;
 
 /**
  * Class Deals
- * @package Mediatoolkit\ActiveCampaign\Deals
+ * @package Jetimob\ActiveCampaign\Deals
  * @see https://developers.activecampaign.com/reference#deal
  */
 class Deals extends Resource
@@ -110,7 +109,7 @@ class Deals extends Resource
     /**
      * Create a deal custom field value
      * @see https://developers.activecampaign.com/v3/reference#create-dealcustomfielddata-resource
-     * 
+     *
      * @param int $deal_id
      * @param int $field_id
      * @param $field_value

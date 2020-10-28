@@ -1,12 +1,12 @@
 <?php
 
-namespace Mediatoolkit\ActiveCampaign\Tags;
+namespace Jetimob\ActiveCampaign\Tags;
 
-use Mediatoolkit\ActiveCampaign\Resource;
+use Jetimob\ActiveCampaign\Resource;
 
 /**
  * Class Tags
- * @package Mediatoolkit\ActiveCampaign\Tags
+ * @package Jetimob\ActiveCampaign\Tags
  * @see https://developers.activecampaign.com/reference#tags
  */
 class Tags extends Resource

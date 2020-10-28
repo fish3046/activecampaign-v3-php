@@ -1,12 +1,12 @@
 <?php
 
-namespace Mediatoolkit\ActiveCampaign\Contacts;
+namespace Jetimob\ActiveCampaign\Contacts;
 
-use Mediatoolkit\ActiveCampaign\Resource;
+use Jetimob\ActiveCampaign\Resource;
 
 /**
  * Class Contacts
- * @package Mediatoolkit\ActiveCampaign\Contacts
+ * @package Jetimob\ActiveCampaign\Contacts
  * @see https://developers.activecampaign.com/reference#contact
  */
 class Contacts extends Resource

@@ -1,13 +1,12 @@
 <?php
 
-namespace Mediatoolkit\ActiveCampaign\Lists;
+namespace Jetimob\ActiveCampaign\Lists;
 
-
-use Mediatoolkit\ActiveCampaign\Resource;
+use Jetimob\ActiveCampaign\Resource;
 
 /**
  * Class Lists
- * @package Mediatoolkit\ActiveCampaign\Lists
+ * @package Jetimob\ActiveCampaign\Lists
  * @see https://developers.activecampaign.com/reference#lists
  */
 class Lists extends Resource

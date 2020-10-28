@@ -1,12 +1,12 @@
 <?php
 
-namespace Mediatoolkit\ActiveCampaign\Tracking;
+namespace Jetimob\ActiveCampaign\Tracking;
 
-use Mediatoolkit\ActiveCampaign\Resource;
+use Jetimob\ActiveCampaign\Resource;
 
 /**
  * Class EventTracking
- * @package Mediatoolkit\ActiveCampaign\Tracking
+ * @package Jetimob\ActiveCampaign\Tracking
  * @see https://developers.activecampaign.com/reference#event-tracking
  */
 class EventTracking extends Resource

@@ -1,9 +1,9 @@
 <?php
 
-namespace Mediatoolkit\Tests\Contacts;
+namespace Jetimob\ActiveCampaign\Tests\Contacts;
 
-use Mediatoolkit\ActiveCampaign\Contacts\Contacts;
-use Mediatoolkit\Tests\ResourceTestCase;
+use Jetimob\ActiveCampaign\Contacts\Contacts;
+use Jetimob\ActiveCampaign\Tests\ResourceTestCase;
 
 class ContactsTest extends ResourceTestCase
 {

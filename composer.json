@@ -1,27 +1,29 @@
 {
-  "name": "mediatoolkit/activecampaign-v3-php",
+  "name": "jetimob/activecampaign-v3-php",
   "description": "PHP Wrapper for ActiveCampaign",
   "require": {
+    "php": "^7.0",
     "guzzlehttp/guzzle": "~6.3"
   },
   "require-dev": {
-    "phpunit/phpunit": "^7"
+    "phpunit/phpunit": "^7",
+    "ext-json": "*"
   },
   "license": "MIT",
   "authors": [
     {
-      "name": "Mediatoolkit",
-      "email": "info@mediatoolkit.com"
+      "name": "Jetimob",
+      "email": "contato@jetimob.com"
     }
   ],
   "autoload": {
     "psr-4": {
-      "Mediatoolkit\\ActiveCampaign\\": "src/"
+      "Jetimob\\ActiveCampaign\\": "src/"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "Mediatoolkit\\Tests\\": "tests/"
+      "Jetimob\\ActiveCampaign\\Tests\\": "tests/"
     }
   }
 }

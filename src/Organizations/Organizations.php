@@ -1,12 +1,12 @@
 <?php
 
-namespace Mediatoolkit\ActiveCampaign\Organizations;
+namespace Jetimob\ActiveCampaign\Organizations;
 
-use Mediatoolkit\ActiveCampaign\Resource;
+use Jetimob\ActiveCampaign\Resource;
 
 /**
  * Class Organizations
- * @package Mediatoolkit\ActiveCampaign\Organizations
+ * @package Jetimob\ActiveCampaign\Organizations
  * @see https://developers.activecampaign.com/reference#organizations
  */
 class Organizations extends Resource

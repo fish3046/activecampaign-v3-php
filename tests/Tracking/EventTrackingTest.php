@@ -5,11 +5,10 @@
  * Time: 17:01
  */
 
-namespace Mediatoolkit\Tests\Tracking;
+namespace Jetimob\ActiveCampaign\Tests\Tracking;
 
-
-use Mediatoolkit\ActiveCampaign\Tracking\EventTracking;
-use Mediatoolkit\Tests\ResourceTestCase;
+use Jetimob\ActiveCampaign\Tracking\EventTracking;
+use Jetimob\ActiveCampaign\Tests\ResourceTestCase;
 
 class EventTrackingTest extends ResourceTestCase
 {

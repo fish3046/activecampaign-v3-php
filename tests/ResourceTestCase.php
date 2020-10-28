@@ -1,9 +1,8 @@
 <?php
 
-namespace Mediatoolkit\Tests;
+namespace Jetimob\ActiveCampaign\Tests;
 
-
-use Mediatoolkit\ActiveCampaign\Client;
+use Jetimob\ActiveCampaign\Client;
 use PHPUnit\Framework\TestCase;
 
 abstract class ResourceTestCase extends TestCase
