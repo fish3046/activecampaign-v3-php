@@ -2,9 +2,9 @@
 
 namespace Jetimob\ActiveCampaign\Tests\Accounts;
 
-use Jetimob\ActiveCampaign\Accounts\Accounts;
-use Jetimob\ActiveCampaign\Accounts\Association;
-use Jetimob\ActiveCampaign\Contacts\Contacts;
+use Jetimob\ActiveCampaign\Http\Accounts\Accounts;
+use Jetimob\ActiveCampaign\Http\Accounts\Association;
+use Jetimob\ActiveCampaign\Http\Contacts\Contacts;
 use Jetimob\ActiveCampaign\Tests\ResourceTestCase;
 
 class AssociationTest extends ResourceTestCase
@@ -25,28 +25,31 @@ class AssociationTest extends ResourceTestCase
     {
         $contacts = new Contacts($this->client);
         $contact = $contacts->create(static::$contact);
-        $contact = json_decode($contact, true);
 
         $accounts = new Accounts($this->client);
         $account = $accounts->create(static::$account);
-        $account = json_decode($account, true);
 
         $association = new Association($this->client);
 
-        $create = $association->create([
+        $createdAassociation = $association->create([
             'contact' => $contact['contact']['id'],
             'account' => $account['account']['id'],
             'jobTitle' => static::$jobTitle,
         ]);
 
-        $createdAccount = json_decode($create, true);
-        $this->assertEquals(1, count($createdAccount));
+        $this->assertEquals(1, count($createdAassociation));
 
-        $getAccount = $association->get($createdAccount['accountContact']['id']);
-        $getAccount = json_decode($getAccount, true);
+        $getAccount = $association->get($createdAassociation['accountContact']['id']);
         $this->assertEquals(self::$jobTitle, $getAccount['accountContact']['jobTitle']);
 
-        $deleteContact = $association->delete($createdAccount['accountContact']['id']);
+        $deleteAssociation = $association->delete((int) $createdAassociation['accountContact']['id']);
+        $this->assertEquals(true, $deleteAssociation);
+
+        $deleteAccount = $accounts->delete((int) $account['account']['id']);
+        $this->assertEquals(true, $deleteAccount);
+
+        $deleteContact = $contacts->delete((int) $contact['contact']['id']);
         $this->assertEquals(true, $deleteContact);
+
     }
 }

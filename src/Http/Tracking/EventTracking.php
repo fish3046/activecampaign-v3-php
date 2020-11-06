@@ -1,8 +1,8 @@
 <?php
 
-namespace Jetimob\ActiveCampaign\Tracking;
+namespace Jetimob\ActiveCampaign\Http\Tracking;
 
-use Jetimob\ActiveCampaign\Resource;
+use Jetimob\ActiveCampaign\Http\Resource;
 
 /**
  * Class EventTracking
@@ -15,101 +15,63 @@ class EventTracking extends Resource
     /**
      * Retrieve status
      * @see https://developers.activecampaign.com/reference#retrieve-event-tracking-status
-     * @return string
      */
-    public function retrieveStatus()
+    public function retrieveStatus(): array
     {
-        $req = $this->client
-            ->getClient()
-            ->get('api/3/eventTracking');
-
-        return $req->getBody()->getContents();
+        return $this->httpGet('api/3/eventTracking');
     }
 
     /**
      * Create a new event
      * @see https://developers.activecampaign.com/v3/reference#create-a-new-event-name-only
-     * @param string $event_name
-     * @return string
      */
-    public function createEvent(string $event_name)
+    public function createEvent(string $event_name): array
     {
-        $req = $this->client
-            ->getClient()
-            ->post('/api/3/eventTrackingEvents', [
+        return $this->httpPost('/api/3/eventTrackingEvents', [
                 'json' => [
                     'eventTrackingEvent' => [
                         'name' => $event_name
                     ]
                 ]
             ]);
-
-        return $req->getBody()->getContents();
     }
 
     /**
      * Delete event
      * @see https://developers.activecampaign.com/v3/reference#remove-event-name-only
-     *
-     * @param string $event_name
-     * @return bool
      */
-    public function deleteEvent(string $event_name)
+    public function deleteEvent(string $event_name): bool
     {
-        $req = $this->client
-            ->getClient()
-            ->delete('/api/3/eventTrackingEvent/' . $event_name);
-
-        return 200 === $req->getStatusCode();
+        return count($this->httpDelete('/api/3/eventTrackingEvent/' . $event_name)) === 0;
     }
 
     /**
      * List all events
      * @see https://developers.activecampaign.com/v3/reference#list-all-event-types
-     *
-     * @param array $query_params
-     * @return string
      */
     public function listAllEvents(array $query_params = [])
     {
-        $req = $this->client
-            ->getClient()
-            ->get('api/3/eventTrackingEvents', [
-                'query' => $query_params
-            ]);
-
-        return $req->getBody()->getContents();
+        return $this->httpGet('api/3/eventTrackingEvents', [
+            'query' => $query_params
+        ]);
     }
 
     /**
      * Enable/Disable event tracking
      * @see https://developers.activecampaign.com/v3/reference#enable-disable-event-tracking
-     *
-     * @param bool $enabled
-     * @return string
      */
-    public function toggleEventTracking(bool $enabled)
+    public function toggleEventTracking(bool $enabled): array
     {
-        $req = $this->client
-            ->getClient()
-            ->put('/api/3/eventTracking/', [
-                'json' => [
-                    'eventTracking' => [
-                        'enabled' => $enabled
-                    ]
+        return $this->httpPut('/api/3/eventTracking/', [
+            'json' => [
+                'eventTracking' => [
+                    'enabled' => $enabled
                 ]
-            ]);
-
-        return $req->getBody()->getContents();
+            ]
+        ]);
     }
 
-    /**
-     * @param string $event_name
-     * @param null $event_data
-     * @param null $email
-     * @return string
-     */
-    public function trackEvent(string $event_name, $event_data = null, $email = null)
+    public function trackEvent(string $event_name, ?array $event_data = null, ?string $email = null): array
     {
         $form_params = [
             'event' => $event_name
@@ -136,7 +98,7 @@ class EventTracking extends Resource
                 'form_params' => $form_params
             ]);
 
-        return $req->getBody()->getContents();
+        return $this->parse($req->getBody()->getContents());
     }
 
 }

@@ -2,12 +2,12 @@
   "name": "jetimob/activecampaign-v3-php",
   "description": "PHP Wrapper for ActiveCampaign",
   "require": {
-    "php": "^7.1",
+    "php": "^7.4",
+    "ext-json": "*",
     "guzzlehttp/guzzle": "^7.0"
   },
   "require-dev": {
     "phpunit/phpunit": "^7",
-    "ext-json": "*"
   },
   "license": "MIT",
   "authors": [

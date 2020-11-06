@@ -1,8 +1,8 @@
 <?php
 
-namespace Jetimob\ActiveCampaign\Tracking;
+namespace Jetimob\ActiveCampaign\Http\Tracking;
 
-use Jetimob\ActiveCampaign\Resource;
+use Jetimob\ActiveCampaign\Http\Resource;
 
 /**
  * Class SiteTracking

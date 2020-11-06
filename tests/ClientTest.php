@@ -2,7 +2,7 @@
 
 namespace Jetimob\ActiveCampaign\Tests;
 
-use Jetimob\ActiveCampaign\Client;
+use Jetimob\ActiveCampaign\Http\Client;
 
 class ClientTest extends ResourceTestCase
 {

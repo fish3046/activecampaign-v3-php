@@ -1,57 +1,47 @@
 <?php
 
-namespace Jetimob\ActiveCampaign;
+namespace Jetimob\ActiveCampaign\Http;
 
 class Client
 {
 
-    const HEADER_AUTH_KEY = 'Api-Token';
+    public const HEADER_AUTH_KEY = 'Api-Token';
 
-    const LIB_USER_AGENT = 'activecampaign-v3-php/1.0';
+    public const LIB_USER_AGENT = 'activecampaign-v3-php/1.0';
 
-    const API_VERSION_URL = '/api/3';
+    public const API_VERSION_URL = '/api/3';
 
-    const EVENT_TRACKING_URL = 'https://trackcmp.net/event';
+    public const EVENT_TRACKING_URL = 'https://trackcmp.net/event';
 
     /**
      * ActiveCampaign API URL.
      * Format is https://YOUR_ACCOUNT_NAME.api-us1.com
-     * @var string
      */
-    protected $api_url;
+    protected string $api_url;
 
     /**
      * ActiveCampaign API token
      * Get yours from developer settings.
-     * @var string
      */
-    protected $api_token;
+    protected string $api_token;
 
     /**
      * Event Tracking ACTID
      * Get yours from Settings > Tracking > Event Tracking > Event Tracking API
-     * @var string
      */
-    protected $event_tracking_actid;
+    protected ?string $event_tracking_actid;
 
     /**
      * Event Tracking Key
      * Get yours from Settings > Tracking > Event Tracking > Event Key
-     * @var string
      */
-    protected $event_tracking_key;
+    protected ?string $event_tracking_key;
 
-    /**
-     * @var \GuzzleHttp\Client
-     */
-    private $client;
+    private \GuzzleHttp\Client $client;
 
-    /**
-     * @var \GuzzleHttp\Client
-     */
-    private $event_tracking_client;
+    private \GuzzleHttp\Client $event_tracking_client;
 
-    public function __construct($api_url, $api_token, $event_tracking_actid = null, $event_tracking_key = null)
+    public function __construct(string $api_url, string $api_token, string $event_tracking_actid = null, string $event_tracking_key = null)
     {
         $this->api_url = $api_url;
         $this->api_token = $api_token;
@@ -82,18 +72,12 @@ class Client
         }
     }
 
-    /**
-     * @return \GuzzleHttp\Client
-     */
-    public function getClient()
+    public function getClient(): \GuzzleHttp\Client
     {
         return $this->client;
     }
 
-    /**
-     * @return \GuzzleHttp\Client|null
-     */
-    public function getEventTrackingClient()
+    public function getEventTrackingClient() : ?\GuzzleHttp\Client
     {
         if (is_null($this->event_tracking_actid)) {
             return null;
@@ -101,26 +85,17 @@ class Client
         return $this->event_tracking_client;
     }
 
-    /**
-     * @return string
-     */
-    public function getApiUrl()
+    public function getApiUrl(): string
     {
         return $this->api_url;
     }
 
-    /**
-     * @return string
-     */
-    public function getApiToken()
+    public function getApiToken(): string
     {
         return $this->api_token;
     }
 
-    /**
-     * @return string|null
-     */
-    public function getEventTrackingActid()
+    public function getEventTrackingActid(): ?string
     {
         return $this->event_tracking_actid;
     }

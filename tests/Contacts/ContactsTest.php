@@ -2,7 +2,7 @@
 
 namespace Jetimob\ActiveCampaign\Tests\Contacts;
 
-use Jetimob\ActiveCampaign\Contacts\Contacts;
+use Jetimob\ActiveCampaign\Http\Contacts\Contacts;
 use Jetimob\ActiveCampaign\Tests\ResourceTestCase;
 
 class ContactsTest extends ResourceTestCase
@@ -31,32 +31,16 @@ class ContactsTest extends ResourceTestCase
     public function testContact()
     {
         $contacts = new Contacts($this->client);
-        $create = $contacts->create([
+        $createdContact = $contacts->create([
             'email' => self::$email,
             'firstName' => self::$firstName,
             'lastName' => self::$lastName
         ]);
 
-        $createdContact = json_decode($create, true);
         $this->assertEquals(1, count($createdContact));
 
         $getContact = $contacts->get($createdContact['contact']['id']);
-        $getContact = json_decode($getContact, true);
         $this->assertEquals(self::$email, $getContact['contact']['email']);
-
-        $listNotExisting = $contacts->listAll([
-            'email' => 'nonexistinguser@mail.tests'
-        ]);
-
-        $listNotExisting = json_decode($listNotExisting, true);
-        $this->assertCount(0, $listNotExisting['contacts']);
-
-        $limitWorking = $contacts->listAll([
-            'email' => self::$email
-        ], 23, 5);
-
-        $limitWorking = json_decode($limitWorking, true);
-        $this->assertCount(0, $limitWorking['contacts']);
 
         $deleteContact = $contacts->delete($createdContact['contact']['id']);
         $this->assertEquals(true, $deleteContact);

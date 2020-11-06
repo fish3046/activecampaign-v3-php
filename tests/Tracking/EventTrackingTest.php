@@ -5,9 +5,9 @@
  * Time: 17:01
  */
 
-namespace Jetimob\ActiveCampaign\Tests\Tracking;
+namespace Jetimob\ActiveCampaign\Http\Tests\Tracking;
 
-use Jetimob\ActiveCampaign\Tracking\EventTracking;
+use Jetimob\ActiveCampaign\Http\Tracking\EventTracking;
 use Jetimob\ActiveCampaign\Tests\ResourceTestCase;
 
 class EventTrackingTest extends ResourceTestCase
