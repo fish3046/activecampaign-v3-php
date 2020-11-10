@@ -26,14 +26,13 @@ class Resource
             );
         } catch (RequestException $e) {
             $response = $e->getResponse();
-            $responseData = $this->parse($response->getBody()->getContents());
             switch ($response->getStatusCode()) {
                 case 404:
-                    throw new NotFound($responseData['message'], $response->getStatusCode(), $e);
+                    throw new NotFound('NotFound', $response->getStatusCode(), $e);
                 case 403:
-                    throw new Forbidden($responseData['message'], $response->getStatusCode(), $e);
+                    throw new Forbidden('Forbidden', $response->getStatusCode(), $e);
                 case 422:
-                    throw new Unprocessable(json_encode($responseData), $response->getStatusCode(), $e);
+                    throw new Unprocessable('Unprocessable', $response->getStatusCode(), $e);
                 case 400:
                     throw new BadRequest('Bad request', $response->getStatusCode(), $e);
                 default:
