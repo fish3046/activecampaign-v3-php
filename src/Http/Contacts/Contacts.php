@@ -3,7 +3,6 @@
 namespace Jetimob\ActiveCampaign\Http\Contacts;
 
 use Jetimob\ActiveCampaign\Http\Resource;
-use Jetimob\ActiveCampaign\Models\Contact;
 
 /**
  * Class Contacts
@@ -12,7 +11,6 @@ use Jetimob\ActiveCampaign\Models\Contact;
  */
 class Contacts extends Resource
 {
-
     protected const BASE_URL = '/api/3/contacts';
     /**
      * Create a contact
@@ -69,5 +67,20 @@ class Contacts extends Resource
     public function delete(int $id): bool
     {
         return count($this->httpDelete(static::BASE_URL . "/{$id}")) === 0;
+    }
+
+    /**
+     * Update list status for a contact
+     * @see https://developers.activecampaign.com/reference#update-list-status-for-contact
+     */
+    public function updateListStatus(int $listId, int $contactId, int $status = 1): array
+    {
+        return $this->httpPost('/api/3/contactLists', [
+            'contactList' => [
+                'list' => $listId,
+                'contact' => $contactId,
+                'status' => $status,
+            ],
+        ]);
     }
 }
