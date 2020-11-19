@@ -76,10 +76,12 @@ class Contacts extends Resource
     public function updateListStatus(int $listId, int $contactId, int $status = 1): array
     {
         return $this->httpPost('/api/3/contactLists', [
-            'contactList' => [
-                'list' => $listId,
-                'contact' => $contactId,
-                'status' => $status,
+            'json' => [
+                'contactList' => [
+                    'list' => $listId,
+                    'contact' => $contactId,
+                    'status' => $status,
+                ],
             ],
         ]);
     }
