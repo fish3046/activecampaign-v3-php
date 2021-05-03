@@ -23,7 +23,7 @@ class Tags extends Resource
             'json' => [
                 'contactTag' => [
                     'contact' => $contactId,
-                    'tagId' => $tagId
+                    'tag' => $tagId
                 ]
             ]
         ]);
