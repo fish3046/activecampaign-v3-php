@@ -10,14 +10,14 @@ class AccountsTest extends ResourceTestCase
     protected static $name;
     protected static $accountUrl;
 
-    public static function setUpBeforeClass()
+    public static function setUpBeforeClass(): void
     {
         parent::setUpBeforeClass();
         self::$name = 'Xesque';
         self::$accountUrl = 'https://jetimob.com';
     }
 
-    public static function tearDownAfterClass()
+    public static function tearDownAfterClass(): void
     {
         parent::tearDownAfterClass();
         self::$name = null;
