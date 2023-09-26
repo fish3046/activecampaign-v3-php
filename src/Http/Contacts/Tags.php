@@ -39,7 +39,7 @@ class Tags extends Resource
         }
 
         // If they only passed a single ID, they expect a single response.
-        if ($originalIsArray) {
+        if (!$originalIsArray) {
             return $results[0];
         }
 
