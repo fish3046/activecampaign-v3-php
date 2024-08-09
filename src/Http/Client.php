@@ -3,7 +3,9 @@
 namespace Jetimob\ActiveCampaign\Http;
 
 use GuzzleHttp\Client as GuzzleClient;
+use GuzzleHttp\HandlerStack;
 use GuzzleHttp\RequestOptions;
+use GuzzleRetry\GuzzleRetryMiddleware;
 
 class Client
 {
@@ -27,7 +29,7 @@ class Client
     {
         return new GuzzleClient([
             'base_uri'              => $api_url,
-
+            'handler'  => self::getMiddlewareStack(),
             RequestOptions::HEADERS => [
                 'User-Agent'          => self::LIB_USER_AGENT,
                 self::HEADER_AUTH_KEY => $api_token,
@@ -45,7 +47,7 @@ class Client
     {
         return new GuzzleClient([
             'base_uri'                  => self::EVENT_TRACKING_URL,
-
+            'handler'  => self::getMiddlewareStack(),
             RequestOptions::HEADERS     => [
                 'User-Agent' => self::LIB_USER_AGENT,
                 'Accept'     => 'application/json'
@@ -67,4 +69,18 @@ class Client
     {
         return $this->event_tracking_client;
     }
+
+    private static function getMiddlewareStack(): HandlerStack
+	{
+		$stack  = HandlerStack::create();
+		$retryMiddleware = GuzzleRetryMiddleware::factory([
+			'retry_enabled'            => true,
+			'max_retry_attempts'       => 3,
+			'retry_on_status'          => [429, 500, 502, 503, 504],
+			'default_retry_multiplier' => 1,
+			'expose_retry_header'      => true,
+		]);
+		$stack->push($retryMiddleware, 'retry');
+		return $stack;
+	}
 }
